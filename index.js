@@ -75,7 +75,7 @@ app.get('/', function(req, res) {
 let token = "KV029F7g3mn62qe3L3";
 
 app.get('/webhook/', function(req, res) {
-  if (req.query['hub.verify_token'] === token) {
+  if (req.query['hub.verify_token'] === "KV029F7g3mn62qe3L3") {
     res.send(req.query['hub.challenge'])
   }
   res.send("Wrong token")
