@@ -72,7 +72,7 @@ app.get('/', function(req, res) {
 // });
 
 // Facebook 
-let token = "KV029F7g3mn62qe3L3"
+let token = "KV029F7g3mn62qe3L3";
 
 app.get('/webhook/', function(req, res) {
   if (req.query['hub.verify_token'] === token) {
