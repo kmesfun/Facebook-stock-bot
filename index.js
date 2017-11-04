@@ -17,6 +17,42 @@ app.get('/', function(req, res) {
   res.send("Hi I am a stock-bot")
 })
 
+
+//google finance
+
+var googleFinance = require('google-finance');
+
+var SYMBOLS = [
+  'NASDAQ:AAPL',
+  'NASDAQ:GOOGL',
+  'NASDAQ:MSFT',
+  'NASDAQ:YHOO',
+  'NYSE:IBM',
+  'NYSE:TWTR'
+];
+
+googleFinance.companyNews({
+  symbols: SYMBOLS
+}, function (err, result) {
+  if (err) { throw err; }
+  _.each(result, function (news, symbol) {
+    console.log(util.format(
+      '=== %s (%d) ===',
+      symbol,
+      news.length
+    ).cyan);
+    if (news[0]) {
+      console.log(
+        '%s\n...\n%s',
+        JSON.stringify(news[0], null, 2),
+        JSON.stringify(news[news.length - 1], null, 2)
+      );
+    } else {
+      console.log('N/A');
+    }
+  });
+ 
+
 // // Creates the endpoint for our webhook 
 // app.post('/webhook', (req, res) => {  
  
@@ -88,12 +124,18 @@ app.post('/webhook/', function(req, res) {
     let sender = event.sender.id
     if (event.message && event.message.text) {
       let text = event.message.text
+      //decideMessage(sender, text)
       sendText(sender, "Text echo: " + text.substring(0, 100))
     }
   }
   res.sendStatus(200)
 })
 
+function decideMessage(sender, text){
+  let text = text1.toLowerCase();
+//if(text.includes)
+
+}
 function sendText(sender, text) {
   let messageData = {text: text}
   request({
