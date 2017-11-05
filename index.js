@@ -50,7 +50,9 @@ googleFinance.companyNews({
     } else {
       console.log('N/A');
     }
-  });
+  }
+  
+});
  
 
 // // Creates the endpoint for our webhook 
