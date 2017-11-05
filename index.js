@@ -110,7 +110,7 @@ var SYMBOLS = [
 // });
 
 // Facebook 
-let token = "KV029F7g3mn62qe3L3";
+let token = "EAAFVjMKnArMBAG3xxxSNPcPkuYf5PsMe5neL25sXEcugliJOICUY06gIZC6avZA7G6RXrCNAvRjqZCcU3x1OB1enTEcRPkQIifKdMIelMogZCfyRKIpqyXRjkzIZCJrX5tkiLodEg4gbuSf11WV6ZAFWrHj1UfY5nEji7tbQR0mAZDZD"
 
 app.get('/webhook/', function(req, res) {
   if (req.query['hub.verify_token'] === "KV029F7g3mn62qe3L3") {
