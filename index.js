@@ -219,7 +219,7 @@ function sendImageMessage(sender){
     "attachment":{
       "type": "image",
       "payload":{
-        "url": "https://finance.yahoo.com/most-active/"
+        "url": "https://www.timothysykes.com/wp-content/uploads/2016/07/yf.jpg"
       }
     }
   }
