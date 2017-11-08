@@ -132,8 +132,8 @@ app.post('/webhook/', function(req, res) {
       // sendText(sender, "Text echo: " + text.substring(0, 100))
     }
 
-    if(event.web_url){
-      let text = JSON.stringify(event.web_url)
+    if(event.postback){
+      let text = JSON.stringify(event.postback)
       decideMessage(sender, text)
       continue
     }
