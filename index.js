@@ -168,13 +168,6 @@ function sendGenericMessage(sender){
             "title":"Yahoo Finance",
             "image_url":"https://www.timothysykes.com/wp-content/uploads/2016/07/yf.jpg",
             "subtitle":"Check for daily stock news.",
-            "default_action": {
-              "type": "web_url",
-              "url": "https://finance.yahoo.com/",
-              "messenger_extensions": true,
-              "webview_height_ratio": "tall",
-              "fallback_url": "https://finance.yahoo.com/"
-            },
             "buttons":[
               {
                 "type":"web_url",
@@ -187,8 +180,9 @@ function sendGenericMessage(sender){
         ]
         }
       }
+    }
       sendRequest(sender, messageData)
-      }
+      
   }
 
 
