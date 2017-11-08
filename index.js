@@ -146,14 +146,14 @@ app.post('/webhook/', function(req, res) {
 function decideMessage(sender, text1){
   let text = text1.toLowerCase();
   if(text.includes("Prices")){
-    sendImageMessage(sender)
+  
     sendButtonMessage(sender, "Prices")
-  }else if (text.includes("companyNews")){
+  }else if (text.includes("company news")){
     sendGenericMessage(sender)
   }else{
       sendText(sender, "to look at prices or company news press one of the buttons")
+     // sendGenericMessage(sender)
       sendGenericMessage(sender)
-      sendButtonMessage(sender, "Prices")
    }
 
 }
