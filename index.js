@@ -198,13 +198,13 @@ function sendButtonMessage(sender, text){
           {
             "type":"web_url",
             "url":"https://www.messenger.com",
-            "title":"companyNews"
+            "title":"companyNews",
             "payload": "companyNews"
           },
           {
             "type":"web_url",
             "url":"https://www.messenger.com",
-            "title":"Prices"
+            "title":"Prices",
             "payload": "Prices"
           }
           
