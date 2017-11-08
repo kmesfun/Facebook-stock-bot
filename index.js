@@ -198,14 +198,12 @@ function sendButtonMessage(sender, text){
           {
             "type":"web_url",
             "url":"https://finance.yahoo.com/",
-            "title":"companyNews",
-            "payload": "companyNews"
+            "title":"companyNews"
           },
           {
             "type":"web_url",
             "url":"https://finance.yahoo.com/most-active/",
-            "title":"Prices",
-            "payload": "Prices"
+            "title":"Prices" 
           }
           
         ]
