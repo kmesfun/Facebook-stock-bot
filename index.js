@@ -146,10 +146,10 @@ app.post('/webhook/', function(req, res) {
 function decideMessage(sender, text1){
   let text = text1.toLowerCase();
   if(text.includes("prices")){
-  
-    sendButtonMessage2(sender, "Prices")
+  	sendGenericMessage2(sender)
+    //sendButtonMessage2(sender, "Prices")
   }else if (text.includes("company news")){
-    sendGenericMessage(sender)
+    sendGenericMessage2(sender)
   }else{
       sendText(sender, "to look at prices or company news press one of the buttons")
      
@@ -175,6 +175,34 @@ function sendGenericMessage(sender){
                 "type":"web_url",
                 "url":"https://finance.yahoo.com/",
                 "title":"View Yahoo Finance"
+              
+              }              
+            ]      
+          }
+         ]
+        }
+      }
+    }
+      sendRequest(sender, messageData)
+      
+  }
+
+  function sendGenericMessage2(sender){
+  let messageData = {
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[
+           {
+            "title":"Yahoo Finance",
+            "image_url":"https://www.timothysykes.com/wp-content/uploads/2016/07/yf.jpg",
+            "subtitle":"Check for daily stock news.",
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":"https://finance.yahoo.com/most-active",
+                "title":"Stock Prices"
               
               }              
             ]      
