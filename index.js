@@ -187,7 +187,7 @@ function sendGenericMessage(sender){
         ]
         }
       }
-      sendRequest(sender, text)
+      sendRequest(sender, messageData)
       }
   }
 
