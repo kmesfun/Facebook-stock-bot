@@ -148,7 +148,7 @@ function decideMessage(sender, text){
   if(text.includes("Prices")){
     sendImageMessage(sender)
   }else if (text.includes("companyNews")){
-    sendGenericMessage(sender )
+    sendGenericMessage(sender)
   }else{
       sendText(sender, "to look at prices or company news simply state it")
       sendButtonMessage(sender, "companyNews")
