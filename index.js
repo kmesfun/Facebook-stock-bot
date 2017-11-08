@@ -147,14 +147,14 @@ function decideMessage(sender, text1){
   let text = text1.toLowerCase();
   if(text.includes("prices")){
   
-    sendButtonMessage(sender, "Prices")
+    sendButtonMessage2(sender, "Prices")
   }else if (text.includes("company news")){
     sendGenericMessage(sender)
   }else{
       sendText(sender, "to look at prices or company news press one of the buttons")
-     	
-      sendGenericMessage(sender)
-      sendButtonMessage(sender, "Prices")
+     
+      sendButtonMessage(sender, "company news")
+      sendButtonMessage2(sender, "Prices")
    }
 
 }
@@ -189,6 +189,28 @@ function sendGenericMessage(sender){
 
 
 function sendButtonMessage(sender, text){
+  let messageData = {
+    
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":text,
+        "buttons":[
+          
+          {
+            "type":"web_url",
+            "url":"https://finance.yahoo.com/",
+            "title":"company news" 
+          }
+          
+        ]
+      }
+    }
+  }
+}
+
+function sendButtonMessage2(sender, text){
   let messageData = {
     
     "attachment":{
