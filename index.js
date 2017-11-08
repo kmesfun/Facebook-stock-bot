@@ -197,13 +197,13 @@ function sendButtonMessage(sender, text){
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://www.messenger.com",
+            "url":"https://finance.yahoo.com/",
             "title":"companyNews",
             "payload": "companyNews"
           },
           {
             "type":"web_url",
-            "url":"https://www.messenger.com",
+            "url":"https://finance.yahoo.com/most-active/",
             "title":"Prices",
             "payload": "Prices"
           }
