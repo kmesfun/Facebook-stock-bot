@@ -143,7 +143,7 @@ app.post('/webhook/', function(req, res) {
   res.sendStatus(200)
 })
 
-function decideMessage(sender, text){
+function decideMessage(sender, text1){
   let text = text1.toLowerCase();
   if(text.includes("Prices")){
     sendImageMessage(sender)
