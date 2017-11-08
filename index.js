@@ -145,7 +145,7 @@ app.post('/webhook/', function(req, res) {
 
 function decideMessage(sender, text1){
   let text = text1.toLowerCase();
-  if(text.includes("Prices")){
+  if(text.includes("prices")){
   
     sendButtonMessage(sender, "Prices")
   }else if (text.includes("company news")){
@@ -197,11 +197,7 @@ function sendButtonMessage(sender, text){
         "template_type":"button",
         "text":text,
         "buttons":[
-          // {
-          //   "type":"web_url",
-          //   "url":"https://finance.yahoo.com/",
-          //   "title":"companyNews"
-          // },
+          
           {
             "type":"web_url",
             "url":"https://finance.yahoo.com/most-active/",
