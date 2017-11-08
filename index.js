@@ -133,7 +133,7 @@ app.post('/webhook/', function(req, res) {
     }
 
     if(event.web_url){
-      let text = event.message.text
+      let text = JSON.stringify(event.web_url)
       decideMessage(sender, text)
       continue
     }
@@ -150,7 +150,7 @@ function decideMessage(sender, text){
   }else if (text.includes("companyNews")){
     sendGenericMessage(sender)
   }else{
-      sendText(sender, "to look at prices or company news simply state it")
+      sendText(sender, "to look at prices or company news press one of the buttons")
       sendButtonMessage(sender, "companyNews")
       sendButtonMessage(sender, "Prices")
    }
@@ -177,7 +177,7 @@ function sendGenericMessage(sender){
               }              
             ]      
           }
-        ]
+         ]
         }
       }
     }
@@ -247,7 +247,7 @@ function sendText(sender, text) {
 
   let messageData = {text: text}
   sendRequest(sender, messageData) 
-  // 
+  
 }
 
 app.listen(app.get('port'), function() {
