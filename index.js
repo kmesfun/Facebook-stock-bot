@@ -18,9 +18,10 @@ app.get('/', function(req, res) {
 })
 
 
-//google finance
+//yahoo finance
 
-var googleFinance = require('google-finance');
+var yahooFinance = require('yahoo-finance');
+
 
 var SYMBOLS = [
   'NASDAQ:AAPL',
@@ -31,28 +32,28 @@ var SYMBOLS = [
   'NYSE:TWTR'
 ];
 
-// googleFinance.companyNews({
-//   symbols: SYMBOLS
-// }, function (err, result) {
-//   if (err) { throw err; }
-//   _.each(result, function (news, symbol) {
-//     console.log(util.format(
-//       '=== %s (%d) ===',
-//       symbol,
-//       news.length
-//     ).cyan);
-//     if (news[0]) {
-//       console.log(
-//         '%s\n...\n%s',
-//         JSON.stringify(news[0], null, 2),
-//         JSON.stringify(news[news.length - 1], null, 2)
-//       );
-//     } else {
-//       console.log('N/A');
-//     }
+yahooFinance.companyNews({
+  symbols: SYMBOLS
+}, function (err, result) {
+  if (err) { throw err; }
+  _.each(result, function (news, symbol) {
+    console.log(util.format(
+      '=== %s (%d) ===',
+      symbol,
+      news.length
+    ).cyan);
+    if (news[0]) {
+      console.log(
+        '%s\n...\n%s',
+        JSON.stringify(news[0], null, 2),
+        JSON.stringify(news[news.length - 1], null, 2)
+      );
+    } else {
+      console.log('N/A');
+    }
   
   
-// });
+});
  
 
 // // Creates the endpoint for our webhook 
@@ -110,7 +111,7 @@ var SYMBOLS = [
 // });
 
 // Facebook 
-let token = "EAAFVjMKnArMBAG3xxxSNPcPkuYf5PsMe5neL25sXEcugliJOICUY06gIZC6avZA7G6RXrCNAvRjqZCcU3x1OB1enTEcRPkQIifKdMIelMogZCfyRKIpqyXRjkzIZCJrX5tkiLodEg4gbuSf11WV6ZAFWrHj1UfY5nEji7tbQR0mAZDZD"
+let token = "EAAFVjMKnArMBAEaTFASFCBm5EIveojRpYRmE3ozYJiVSiHBNbt6laylsp2c33CniQZBawfkjYfLkWMSBqd7F9lzelV741AYEirQK11hevSykFlgj5ApEh3nh8YoAzhjvi9ZCGzYI7lK9NFC6yKOF9WxCmsWqvvZBWJiQ58MowZDZD";
 
 app.get('/webhook/', function(req, res) {
   if (req.query['hub.verify_token'] === "KV029F7g3mn62qe3L3") {
@@ -124,23 +125,114 @@ app.post('/webhook/', function(req, res) {
   for (let i = 0; i < messaging_events.length; i++) {
     let event = messaging_events[i]
     let sender = event.sender.id
+
     if (event.message && event.message.text) {
       let text = event.message.text
-      //decideMessage(sender, text)
-      sendText(sender, "Text echo: " + text.substring(0, 100))
+      decideMessage(sender, text)
+      // sendText(sender, "Text echo: " + text.substring(0, 100))
+    }
+
+    if(event.web_url){
+      let text = event.message.text
+      decideMessage(sender, text)
+      continue
+    }
+
     }
   }
   res.sendStatus(200)
 })
 
-// function decideMessage(sender, text){
-//   let text = text1.toLowerCase();
-// //if(text.includes)
+function decideMessage(sender, text){
+  let text = text1.toLowerCase();
+  if(text.includes("Prices")){
+    sendImageMessage(sender)
+  }else if (text.includes("companyNews")){
+    sendGenericMessage(sender )
+  }else{
+      sendText(sender, "to look at prices or company news simply state it")
+      sendButtonMessage(sender, "companyNews")
+      sendButtonMessage(sender, "Prices")
+   }
 
-// }
-function sendText(sender, text) {
-  let messageData = {text: text}
-  request({
+}
+
+function sendGenericMessage(sender){
+  let messageData = {
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[
+           {
+            "title":"Yahoo Finance",
+            "image_url":"https://www.timothysykes.com/wp-content/uploads/2016/07/yf.jpg",
+            "subtitle":"Check for daily stock news.",
+            "default_action": {
+              "type": "web_url",
+              "url": "https://finance.yahoo.com/",
+              "messenger_extensions": true,
+              "webview_height_ratio": "tall",
+              "fallback_url": "https://finance.yahoo.com/"
+            },
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":"https://finance.yahoo.com/",
+                "title":"View Yahoo Finance"
+              
+              }              
+            ]      
+          }
+        ]
+        }
+      }
+      sendRequest(sender, text)
+      }
+  }
+
+
+function sendButtonMessage(sender, text){
+  let messageData = {
+    
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":text,
+        "buttons":[
+          {
+            "type":"web_url",
+            "url":"https://www.messenger.com",
+            "title":"companyNews"
+            "payload": "companyNews"
+          },
+          {
+            "type":"web_url",
+            "url":"https://www.messenger.com",
+            "title":"Prices"
+            "payload": "Prices"
+          },
+          
+        ]
+      }
+    }
+  }
+}
+
+function sendImageMessage(sender){
+  let messageData = {
+    "attachment":{
+      "type": "image",
+      "payload":{
+        "url": "https://finance.yahoo.com/most-active/"
+      }
+    }
+  }
+}
+
+function sendRequest(sender, messageData){
+request({
     url: "https://graph.facebook.com/v2.6/me/messages",
     qs : {access_token: token},
     method: "POST",
@@ -155,6 +247,13 @@ function sendText(sender, text) {
       console.log("response body error")
     }
   })
+}
+
+function sendText(sender, text) {
+
+  let messageData = {text: text}
+  sendRequest(sender, messageData) 
+  // 
 }
 
 app.listen(app.get('port'), function() {
