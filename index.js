@@ -212,7 +212,7 @@ function sendButtonMessage(sender, text){
             "url":"https://www.messenger.com",
             "title":"Prices"
             "payload": "Prices"
-          },
+          }
           
         ]
       }
