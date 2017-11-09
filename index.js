@@ -152,7 +152,7 @@ function decideMessage(sender, text1){
   }else if (text.includes("company news")){
     sendGenericMessage(sender)
   }else{
-     // sendText(sender, "to look at prices or company news press one of the buttons")
+      sendText(sender, "to look at prices or company news press one of the buttons")
       sendButtonMessage(sender)
    }
 
