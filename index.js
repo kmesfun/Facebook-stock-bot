@@ -152,8 +152,7 @@ function decideMessage(sender, text1){
   }else if (text.includes("company news")){
     sendGenericMessage2(sender)
   }else{
-      sendText(sender, "to look at prices or company news press one of the buttons")
-     
+     // sendText(sender, "to look at prices or company news press one of the buttons")
       sendButtonMessage(sender)
    }
 
@@ -201,7 +200,7 @@ function sendGenericMessage(sender){
             "buttons":[
               {
                 "type":"web_url",
-                "url":"https://finance.yahoo.com/most-active",
+                "url":"https://finance.yahoo.com/",
                 "title":"Stock Prices"
               
               }              
