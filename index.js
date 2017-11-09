@@ -139,6 +139,11 @@ app.post('/webhook/', function(req, res) {
       decideMessage(sender, text)
       continue
          }
+     if(event.postback){
+      let text = JSON.stringify(event.web_url)
+      decideMessage(sender, text)
+      continue
+    }
 
     }
   
