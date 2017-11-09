@@ -1,3 +1,5 @@
+//buttons dont work
+
 'use strict';
 
 const express = require('express')
@@ -14,7 +16,7 @@ app.use(bodyParser.json())
 // ROUTES
 
 app.get('/', function(req, res) {
-  res.send("Hi I am a stock-bot")
+  res.send("stock-bot is now working.")
 })
 
 
@@ -229,7 +231,10 @@ function sendButtonMessage(sender, text){
           {
             "type":"web_url",
             "url":"https://finance.yahoo.com/",
-            "title":"company news" 
+            "title":"company news",
+            "webview_height_ratio": "full",
+    		"messenger_extensions": true,  
+    		"fallback_url": "https://finance.yahoo.com/"
           }
           
         ]
@@ -251,7 +256,10 @@ function sendButtonMessage2(sender, text){
           {
             "type":"web_url",
             "url":"https://finance.yahoo.com/most-active/",
-            "title":"Prices" 
+            "title":"Prices",
+            "webview_height_ratio": "full",
+    		"messenger_extensions": true,  
+    		"fallback_url": "https://finance.yahoo.com/most-active/" 
           }
           
         ]
