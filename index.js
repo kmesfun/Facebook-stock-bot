@@ -155,8 +155,7 @@ function decideMessage(sender, text1){
   }else{
       sendText(sender, "to look at prices or company news press one of the buttons")
      
-      sendButtonMessage(sender, "company news")
-      sendButtonMessage2(sender, "Prices")
+      sendButtonMessage(sender)
    }
 
 }
@@ -218,55 +217,33 @@ function sendGenericMessage(sender){
   }
 
 
-function sendButtonMessage(sender, text){
+function sendButtonMessage(sender){
   let messageData = {
     
     "attachment":{
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":text,
+        "text":"click on one of the buttons",
         "buttons":[
           
           {
             "type":"web_url",
             "url":"https://finance.yahoo.com/",
-            "title":"company news",
-            "webview_height_ratio": "full",
-    		"messenger_extensions": true,  
-    		"fallback_url": "https://finance.yahoo.com/"
+            "title":"company news"
+            
+          },
+          {
+            "type":"web_url",
+            "url":"https://finance.yahoo.com/most-active/",
+            "title":"Prices"
           }
-          
         ]
       }
     }
   }
 }
 
-function sendButtonMessage2(sender, text){
-  let messageData = {
-    
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"button",
-        "text":text,
-        "buttons":[
-          
-          {
-            "type":"web_url",
-            "url":"https://finance.yahoo.com/most-active/",
-            "title":"Prices",
-            "webview_height_ratio": "full",
-    		"messenger_extensions": true,  
-    		"fallback_url": "https://finance.yahoo.com/most-active/" 
-          }
-          
-        ]
-      }
-    }
-  }
-}
 
 function sendImageMessage(sender){
   let messageData = {
