@@ -181,7 +181,12 @@ function sendGenericMessage(sender){
                 "url":"https://finance.yahoo.com/",
                 "title":"View Yahoo Finance"
               
-              }              
+              },
+              {
+               "type":"web_url",
+               "url":"https://finance.yahoo.com/",
+               "title":"News"  
+               }            
             ]      
           }
          ]
