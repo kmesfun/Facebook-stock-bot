@@ -157,9 +157,9 @@ function decideMessage(sender, text1){
   }else if (text.includes("company news")){
     sendGenericMessage(sender)
   }else if (text.includes("help")){
-      sendButtonMessage(sender,"News or Prices?")
+      sendButtonMessage(sender)
    }else{
-      sendButtonMessage(sender,"News or Prices?")
+      sendButtonMessage(sender)
    }
 
 }
@@ -221,13 +221,13 @@ function sendGenericMessage(sender){
   }
 
 
-function sendButtonMessage(sender,text){
+function sendButtonMessage(sender){
   let messageData = {
     "attachment":{
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text": text,
+        "text": "News or Prices?",
         "buttons":[
           {
             "type":"web_url",
@@ -238,11 +238,6 @@ function sendButtonMessage(sender,text){
            "type":"web_url",
             "url":"https://finance.yahoo.com/most-active/",
             "title":"Prices"
-          },
-          {
-            "type":"postback"
-            "title":"Prices"
-            "payload":"prices"
           }
         ]
       }
