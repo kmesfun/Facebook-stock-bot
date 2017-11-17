@@ -238,11 +238,16 @@ function sendButtonMessage(sender,text){
            "type":"web_url",
             "url":"https://finance.yahoo.com/most-active/",
             "title":"Prices"
+          },
+          {
+            "type":"postback"
+            "title":"Prices"
+            "payload":"prices"
           }
         ]
       }
     }
-  }
+  }sendRequest(sender, messageData)
 }
     
 
