@@ -206,7 +206,7 @@ function sendGenericMessage(sender){
             "buttons":[
               {
                 "type":"web_url",
-                "url":"https://finance.yahoo.com/",
+                "url":"https://finance.yahoo.com/most-active",
                 "title":"Stock Prices"
               
               }              
@@ -235,8 +235,8 @@ function sendButtonMessage(sender){
             "buttons":[
               {
                 "type":"web_url",
-                "url":"https://finance.yahoo.com/",
-                "title":"View Yahoo Finance"
+                "url":"https://finance.yahoo.com/most-active",
+                "title":"Stock Prices"
               
               },
               {
