@@ -230,19 +230,23 @@ function sendButtonMessage(sender){
         "text": "News or Prices?",
         "buttons":[
           {
-            "type":"web_url",
-            "url":"https://finance.yahoo.com/",
-            "title":"News"
+            "type":"postback",
+            "title":"Prices",
+            "payload":"Prices"
+            // "type":"web_url",
+            // "url":"https://finance.yahoo.com/",
+            // "title":"News"
           },
           {
-           "type":"web_url",
-            "url":"https://finance.yahoo.com/most-active/",
-            "title":"Prices"
+           // "type":"web_url",
+           //  "url":"https://finance.yahoo.com/most-active/",
+           //  "title":"Prices"
           }
         ]
       }
     }
-  }sendRequest(sender, messageData)
+  }
+  sendRequest(sender, messageData)
 }
     
 
