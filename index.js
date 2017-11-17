@@ -181,12 +181,7 @@ function sendGenericMessage(sender){
                 "url":"https://finance.yahoo.com/",
                 "title":"View Yahoo Finance"
               
-              },
-              {
-               "type":"web_url",
-               "url":"https://finance.yahoo.com/",
-               "title":"News"  
-               }            
+              }        
             ]      
           }
          ]
@@ -231,29 +226,33 @@ function sendButtonMessage(sender){
     "attachment":{
       "type":"template",
       "payload":{
-        "template_type":"button",
-        "text": "News or Prices?",
-        "buttons":[
-          {
-            "type":"postback",
-            "title":"Prices",
-            "payload":"Prices"
-            // "type":"web_url",
-            // "url":"https://finance.yahoo.com/",
-            // "title":"News"
-          },
-          {
-           // "type":"web_url",
-           //  "url":"https://finance.yahoo.com/most-active/",
-           //  "title":"Prices"
+        "template_type":"generic",
+        "elements":[
+           {
+            "title":"Yahoo Finances",
+            "image_url":"https://www.timothysykes.com/wp-content/uploads/2016/07/yf.jpg",
+            "subtitle":"Price or News?",
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":"https://finance.yahoo.com/",
+                "title":"View Yahoo Finance"
+              
+              },
+              {
+               "type":"web_url",
+               "url":"https://finance.yahoo.com/",
+               "title":"News"  
+               }            
+            ]      
           }
-        ]
+         ]
+        }
       }
     }
-  }
-  sendRequest(sender, messageData)
-}
-    
+      sendRequest(sender, messageData)
+      
+  }  
 
 
 function sendImageMessage(sender){
