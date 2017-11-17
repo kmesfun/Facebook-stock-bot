@@ -157,10 +157,9 @@ function decideMessage(sender, text1){
   }else if (text.includes("company news")){
     sendGenericMessage(sender)
   }else if (text.includes("help")){
-     // sendText(sender, "to look at prices or company news press one of the buttons")
-      sendButtonMessage(sender)
+      sendButtonMessage(sender,"News or Prices?")
    }else{
-      sendButtonMessage(sender)
+      sendButtonMessage(sender,"News or Prices?")
    }
 
 }
@@ -222,13 +221,13 @@ function sendGenericMessage(sender){
   }
 
 
-function sendButtonMessage(sender){
+function sendButtonMessage(sender,text){
   let messageData = {
     "attachment":{
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"News or Prices?",
+        "text": text,
         "buttons":[
           {
             "type":"web_url",
@@ -243,7 +242,7 @@ function sendButtonMessage(sender){
         ]
       }
     }
-  }sendRequest(sender, messageData)
+  }
 }
     
 
