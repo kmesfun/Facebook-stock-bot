@@ -159,6 +159,8 @@ function decideMessage(sender, text1){
   }else if (text.includes("help")){
      // sendText(sender, "to look at prices or company news press one of the buttons")
       sendButtonMessage(sender)
+   }else{
+      sendButtonMessage(sender)
    }
 
 }
@@ -231,13 +233,13 @@ function sendButtonMessage(sender){
         "buttons":[
           
           {
-            "type":"postback",
+            "type":"web_url",
             "url":"https://finance.yahoo.com/",
             "title":"company news"
             
           },
           {
-            "type":"postback",
+            "type":"web_url",
             "url":"https://finance.yahoo.com/most-active/",
             "title":"Prices"
           }
