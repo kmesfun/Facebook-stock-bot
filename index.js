@@ -224,22 +224,19 @@ function sendGenericMessage(sender){
 
 function sendButtonMessage(sender){
   let messageData = {
-    
     "attachment":{
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"click on one of the buttons",
+        "text":"News or Prices?",
         "buttons":[
-          
           {
             "type":"web_url",
             "url":"https://finance.yahoo.com/",
-            "title":"company news"
-            
+            "title":"News"
           },
           {
-            "type":"web_url",
+           "type":"web_url",
             "url":"https://finance.yahoo.com/most-active/",
             "title":"Prices"
           }
@@ -248,6 +245,7 @@ function sendButtonMessage(sender){
     }
   }
 }
+    
 
 
 function sendImageMessage(sender){
