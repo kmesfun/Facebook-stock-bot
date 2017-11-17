@@ -243,7 +243,7 @@ function sendButtonMessage(sender){
         ]
       }
     }
-  }
+  }sendRequest(sender, messageData)
 }
     
 
