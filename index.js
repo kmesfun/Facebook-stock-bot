@@ -159,7 +159,7 @@ function decideMessage(sender, text1){
   }else if (text.includes("help")){
       sendButtonMessage(sender)
    }else{
-      sendButtonMessage(sender)
+      sendTextMessage("Type help to get all options")
    }
 
 }
