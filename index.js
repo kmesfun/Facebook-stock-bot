@@ -196,7 +196,7 @@ function sendPrices(sender){
         "url": apple
       }
     }
-  }
+  }sendRequest(sender, messageData)
 }
 
 function sendRequest(sender, messageData){
