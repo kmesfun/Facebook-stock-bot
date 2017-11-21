@@ -13,6 +13,7 @@
     "dashbot": "^9.4.0",
     "express": "^4.16.2",
     "google-finance": "^0.1.10",
+    "google-stocks": "^1.0.1",
     "request": "^2.83.0",
     "yahoo-finance": "^0.3.4"
   }

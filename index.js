@@ -20,97 +20,17 @@ app.get('/', function(req, res) {
 })
 
 
-//yahoo finance
-
-// var yahooFinance = require('yahoo-finance');
-
-
-// var SYMBOLS = [
-//   'NASDAQ:AAPL',
-//   'NASDAQ:GOOGL',
-//   'NASDAQ:MSFT',
-//   'NASDAQ:YHOO',
-//   'NYSE:IBM',
-//   'NYSE:TWTR'
-// ];
-
-// yahooFinance.companyNews({
-//   symbols: SYMBOLS
-// }, function (err, result) {
-//   if (err) { throw err; }
-//   _.each(result, function (news, symbol) {
-//     console.log(util.format(
-//       '=== %s (%d) ===',
-//       symbol,
-//       news.length
-//     ).cyan);
-//     if (news[0]) {
-//       console.log(
-//         '%s\n...\n%s',
-//         JSON.stringify(news[0], null, 2),
-//         JSON.stringify(news[news.length - 1], null, 2)
-//       );
-//     } else {
-//       console.log('N/A');
-//     }
-  
-  
-// });
+var googleStocks = require('google-stocks');
  
-
-// // Creates the endpoint for our webhook 
-// app.post('/webhook', (req, res) => {  
+googleStocks(['AAPL'], function(error, data) {
+  console.log(data);
+});
  
-//   let body = req.body;
+googleStocks(['TSE:WJA', 'NASDAQ:GOOG', 'AAPL'], function(error, data) {
+  console.log(data);
+});
 
-//   // Checks this is an event from a page subscription
-//   if (body.object === 'page') {
-
-//     // Iterates over each entry - there may be multiple if batched
-//     body.entry.forEach(function(entry) {
-
-//       // Gets the message. entry.messaging is an array, but 
-//       // will only ever contain one message, so we get index 0
-//       let webhookEvent = entry.messaging[0];
-//       console.log(webhookEvent);
-//     });
-
-//     // Returns a '200 OK' response to all requests
-//     res.status(200).send('EVENT_RECEIVED');
-//   } else {
-//     // Returns a '404 Not Found' if event is not from a page subscription
-//     res.sendStatus(404);
-//   }
-
-// });
-
-// // Adds support for GET requests to our webhook
-// app.get('/webhook', (req, res) => {
-
-//   // Your verify token. Should be a random string.
-//   let VERIFY_TOKEN = "KV029F7g3mn62qe3L3";
-    
-//   // Parse the query params
-//   let mode = req.query['hub.mode'];
-//   let token = req.query['hub.verify_token'];
-//   let challenge = req.query['hub.challenge'];
-    
-//   // Checks if a token and mode is in the query string of the request
-//   if (mode && token) {
-  
-//     // Checks the mode and token sent is correct
-//     if (mode === 'subscribe' && token === VERIFY_TOKEN) {
-      
-//       // Responds with the challenge token from the request
-//       console.log('WEBHOOK_VERIFIED');
-//       res.status(200).send(challenge);
-    
-//     } else {
-//       // Responds with '403 Forbidden' if verify tokens do not match
-//       res.sendStatus(403);      
-//     }
-//   }
-// });
+ 
 
 // Facebook 
 let token = "EAAFVjMKnArMBAEaTFASFCBm5EIveojRpYRmE3ozYJiVSiHBNbt6laylsp2c33CniQZBawfkjYfLkWMSBqd7F9lzelV741AYEirQK11hevSykFlgj5ApEh3nh8YoAzhjvi9ZCGzYI7lK9NFC6yKOF9WxCmsWqvvZBWJiQ58MowZDZD";
@@ -143,7 +63,7 @@ app.post('/webhook/', function(req, res) {
       let text = JSON.stringify(event.web_url)
       decideMessage(sender, text)
       continue
-    }
+      }
 
     }
   
@@ -152,7 +72,11 @@ app.post('/webhook/', function(req, res) {
 
 function decideMessage(sender, text1){
   let text = text1.toLowerCase();
-  if(text.includes("prices")){
+  if(text.includes("google")){
+    googleStocks(['AAPL'], function(error, data) {
+  console.log(data);
+});
+  }if(text.includes("prices")){
   	sendGenericMessage2(sender)
   }else if (text.includes("company news")){
     sendGenericMessage(sender)
