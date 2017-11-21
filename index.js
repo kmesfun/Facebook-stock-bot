@@ -72,13 +72,11 @@ app.post('/webhook/', function(req, res) {
 
 function decideMessage(sender, text1){
   let text = text1.toLowerCase();
-  if(text.includes("google")){
-    googleStocks(['GOOG'], function(error, data) {
-  console.log(data);
-});
+  if(text.includes("apple")){
+    console.log(apple);
   }if(text.includes("prices")){
   	sendGenericMessage2(sender)
-  }else if (text.includes("company news")){
+  }else if (text.includes("news")){
     sendGenericMessage(sender)
   }else if (text.includes("help")){
       sendButtonMessage(sender)
