@@ -73,7 +73,7 @@ app.post('/webhook/', function(req, res) {
 function decideMessage(sender, text1){
   let text = text1.toLowerCase();
   if(text.includes("apple")){
-    console.log(apple);
+    sendPrices(sender)
   }if(text.includes("prices")){
   	sendGenericMessage2(sender)
   }else if (text.includes("news")){
@@ -183,6 +183,17 @@ function sendImageMessage(sender){
       "type": "image",
       "payload":{
         "url": "https://www.timothysykes.com/wp-content/uploads/2016/07/yf.jpg"
+      }
+    }
+  }
+}
+
+function sendPrices(sender){
+  let messageData = {
+    "attachment":{
+      "type": "web_url",
+      "payload":{
+        "url": apple
       }
     }
   }
