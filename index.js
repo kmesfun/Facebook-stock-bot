@@ -19,7 +19,7 @@ app.get('/', function(req, res) {
   res.send("stock-bot is now working.")
 })
 
-
+var apple = "https://www.bloomberg.com/quote/AAPL:US";
 var googleStocks = require('google-stocks');
  
 googleStocks(['AAPL'], function(error, data) {
@@ -73,7 +73,7 @@ app.post('/webhook/', function(req, res) {
 function decideMessage(sender, text1){
   let text = text1.toLowerCase();
   if(text.includes("google")){
-    googleStocks(['AAPL'], function(error, data) {
+    googleStocks(['GOOG'], function(error, data) {
   console.log(data);
 });
   }if(text.includes("prices")){
