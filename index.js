@@ -19,18 +19,7 @@ app.get('/', function(req, res) {
   res.send("stock-bot is now working.")
 })
 
-var apple = "https://www.bloomberg.com/quote/AAPL:US";
-var googleStocks = require('google-stocks');
- 
-googleStocks(['AAPL'], function(error, data) {
-  console.log(data);
-});
- 
-googleStocks(['TSE:WJA', 'NASDAQ:GOOG', 'AAPL'], function(error, data) {
-  console.log(data);
-});
-
- 
+var apple = "https://www.bloomberg.com/quote/AAPL:US"; 
 
 // Facebook 
 let token = "EAAFVjMKnArMBAEaTFASFCBm5EIveojRpYRmE3ozYJiVSiHBNbt6laylsp2c33CniQZBawfkjYfLkWMSBqd7F9lzelV741AYEirQK11hevSykFlgj5ApEh3nh8YoAzhjvi9ZCGzYI7lK9NFC6yKOF9WxCmsWqvvZBWJiQ58MowZDZD";
@@ -193,7 +182,7 @@ function sendPrices(sender){
     "attachment":{
       "type": "web_url",
       "payload":{
-        "url": apple
+        "url": "https://www.bloomberg.com/quote/AAPL:US";
       }
     }
   }sendRequest(sender, messageData)
