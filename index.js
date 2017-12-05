@@ -174,7 +174,7 @@ function sendPrices(sender){
         "template_type":"generic",
         "elements":[
            {
-            "title":"Yahoo Finance",
+            "title":"Stock Price",
             "image_url":"https://www.timothysykes.com/wp-content/uploads/2016/07/yf.jpg",
             "subtitle":"Check for daily stock news.",
             "buttons":[
