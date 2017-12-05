@@ -59,11 +59,13 @@ app.post('/webhook/', function(req, res) {
   res.sendStatus(200)
 })
 
+
+
 function decideMessage(sender, text1){
   let text = text1.toLowerCase();
   if(text.includes("apple")){
     sendPrices(sender)
-  }if(text.includes("prices")){
+  }else if(text.includes("prices")){
   	sendGenericMessage2(sender)
   }else if (text.includes("news")){
     sendGenericMessage(sender)
