@@ -166,27 +166,33 @@ function sendButtonMessage(sender){
   }  
 
 
-function sendImageMessage(sender){
-  let messageData = {
-    "attachment":{
-      "type": "image",
-      "payload":{
-        "url": "https://www.timothysykes.com/wp-content/uploads/2016/07/yf.jpg"
-      }
-    }
-  }
-}
-
 function sendPrices(sender){
   let messageData = {
     "attachment":{
-      "type": "web_url",
+      "type":"template",
       "payload":{
-        "url": "https://www.bloomberg.com/quote/AAPL:US";
+        "template_type":"generic",
+        "elements":[
+           {
+            "title":"Yahoo Finance",
+            "image_url":"https://www.timothysykes.com/wp-content/uploads/2016/07/yf.jpg",
+            "subtitle":"Check for daily stock news.",
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":apple,
+                "title":"Company Price"
+              
+              }              
+            ]      
+          }
+         ]
+        }
       }
     }
-  }sendRequest(sender, messageData)
-}
+      sendRequest(sender, messageData)
+      
+  }
 
 function sendRequest(sender, messageData){
 request({
