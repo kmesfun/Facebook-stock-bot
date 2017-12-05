@@ -18,8 +18,7 @@ app.get('/', function(req, res) {
   res.send("stock-bot is now working.")
 })
 
-var sym = df['Symbol']
-;
+var sym = ;
 
 var bloomberg = "https://www.bloomberg.com/quote/";
 
