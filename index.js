@@ -1,4 +1,3 @@
-//buttons dont work
 
 'use strict';
 
@@ -19,7 +18,10 @@ app.get('/', function(req, res) {
   res.send("stock-bot is now working.")
 })
 
-var apple = "https://www.bloomberg.com/quote/AAPL:US"; 
+var sym = df['Symbol']
+;
+
+var bloomberg = "https://www.bloomberg.com/quote/";
 
 // Facebook 
 let token = "EAAFVjMKnArMBAEaTFASFCBm5EIveojRpYRmE3ozYJiVSiHBNbt6laylsp2c33CniQZBawfkjYfLkWMSBqd7F9lzelV741AYEirQK11hevSykFlgj5ApEh3nh8YoAzhjvi9ZCGzYI7lK9NFC6yKOF9WxCmsWqvvZBWJiQ58MowZDZD";
@@ -71,7 +73,7 @@ function decideMessage(sender, text1){
     sendGenericMessage(sender)
   }else if (text.includes("help")){
       sendButtonMessage(sender)
-   }else{
+  }else{
       sendTextMessage("Type help to get all options")
    }
 
