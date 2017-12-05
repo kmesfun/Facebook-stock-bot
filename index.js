@@ -175,7 +175,7 @@ function sendPrices(sender){
         "elements":[
            {
             "title":"Stock Price",
-            "image_url":"https://www.timothysykes.com/wp-content/uploads/2016/07/yf.jpg",
+            "image_url":"https://assets.bwbx.io/images/users/iqjWHBFdfxIU/ivUxvlPidC3M/v0/-1x-1.jpg",
             "subtitle":"Check for daily stock news.",
             "buttons":[
               {
