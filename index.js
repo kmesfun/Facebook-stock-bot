@@ -21,7 +21,7 @@ app.get('/', function(req, res) {
 })
 
 
-var bloomberg = "https://www.bloomberg.com/quote/";
+let bloomberg = "https://www.bloomberg.com/quote/";
 
 // Facebook 
 let token = "EAAFVjMKnArMBAEaTFASFCBm5EIveojRpYRmE3ozYJiVSiHBNbt6laylsp2c33CniQZBawfkjYfLkWMSBqd7F9lzelV741AYEirQK11hevSykFlgj5ApEh3nh8YoAzhjvi9ZCGzYI7lK9NFC6yKOF9WxCmsWqvvZBWJiQ58MowZDZD";
@@ -70,8 +70,7 @@ function decideMessage(sender, text1){
         sendPrices(sender,SYMBOL[i])
   }
 }
-  
-  }else if(text.includes("prices")){
+  else if(text.includes("prices")){
   	sendGenericMessage2(sender)
   }else if (text.includes("news")){
     sendGenericMessage(sender)
