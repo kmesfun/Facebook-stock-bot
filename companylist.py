@@ -8,7 +8,12 @@ lis = []
 lis = df['Symbol']
 name = df['Name']
 stock = [lis,name]
-print stock
-
-
+file = open('symbollist.txt','w+')
+file2 = open('namelist.txt','w+')
+for i in range(len(lis)):
+	file.write(lis[i])
+for j in range(len(name)):
+    file2.write(name[j])
+file.close()
+file2.close()
 

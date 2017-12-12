@@ -1,6 +1,8 @@
+import System.IO;
 
 'use strict';
-
+const NAMES = new StreamReader("namelist.txt");
+const SYMBOL = new StreamReader("symbollist.txt");
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
@@ -18,7 +20,6 @@ app.get('/', function(req, res) {
   res.send("stock-bot is now working.")
 })
 
-var sym = ;
 
 var bloomberg = "https://www.bloomberg.com/quote/";
 
@@ -64,8 +65,12 @@ app.post('/webhook/', function(req, res) {
 
 function decideMessage(sender, text1){
   let text = text1.toLowerCase();
-  if(text.includes("apple")){
-    sendPrices(sender)
+  for (i = 0; i < SYMBOL.length; i++) {
+    if(text.includes(SYMBOL[i])){
+        sendPrices(sender,SYMBOL[i])
+  }
+}
+  
   }else if(text.includes("prices")){
   	sendGenericMessage2(sender)
   }else if (text.includes("news")){
@@ -169,7 +174,7 @@ function sendButtonMessage(sender){
   }  
 
 
-function sendPrices(sender){
+function sendPrices(sender, name){
   let messageData = {
     "attachment":{
       "type":"template",
@@ -183,7 +188,7 @@ function sendPrices(sender){
             "buttons":[
               {
                 "type":"web_url",
-                "url":apple,
+                "url": bloomberg + name
                 "title":"Company Price"
               
               }              
