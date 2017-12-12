@@ -65,7 +65,7 @@ app.post('/webhook/', function(req, res) {
 
 function decideMessage(sender, text1){
   let text = text1.toLowerCase();
-  for (i = 0; i < SYMBOL.length; i++) {
+  for (let i = 0; i < SYMBOL.length; i++) {
     if(text.includes(SYMBOL[i])){
         sendPrices(sender,SYMBOL[i])
   }
@@ -188,7 +188,7 @@ function sendPrices(sender, name){
             "buttons":[
               {
                 "type":"web_url",
-                "url": bloomberg + name
+                "url": bloomberg + name+":US"
                 "title":"Company Price"
               
               }              
