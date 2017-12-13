@@ -4,8 +4,8 @@ import * as fs from 'fs';
 'use strict';
 const fs = require('fs');
 //var output = fs.readFileSync('someData.txt')
-var NAMES = fs.readFileSync("namelist.txt");
-var SYMBOL = fs.readFileSync("symbollist.txt");
+var NAMES = new StreamReader("namelist.txt");
+var SYMBOL = new StreamReader("symbollist.txt");
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
@@ -68,9 +68,9 @@ app.post('/webhook/', function(req, res) {
 
 function decideMessage(sender, text1){
   let text = text1.toLowerCase();
-  for (let i = 0; i < SYMBOL.length; i++) {
-    if(text.includes(SYMBOL[i])){
-        sendPrices(sender,SYMBOL[i])
+  while (!SYMBOL.EndOfStream)  {
+    if(text.includes(SYMBOL.ReadLine())){
+        sendPrices(sender,SYMBOL.ReadLine())
   }
 }
   else if(text.includes("prices")){
