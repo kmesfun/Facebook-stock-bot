@@ -1,8 +1,8 @@
 import System.IO;
 
 'use strict';
-const NAMES = new StreamReader("namelist.txt");
-const SYMBOL = new StreamReader("symbollist.txt");
+let NAMES = new StreamReader("namelist.txt");
+let SYMBOL = new StreamReader("symbollist.txt");
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
