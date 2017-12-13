@@ -74,12 +74,11 @@ app.post('/webhook/', function(req, res) {
 
 function decideMessage(sender, text1){
   let text = text1.toLowerCase();
-  for (let i = 0; i < csvArray.length; i++) {
-    if(text.includes(csvArray[i])){
-        sendPrices(sender,csvArray[i])
-  }
-}
-  else if(text.includes("prices")){
+  for (var x = 0; i < csvArray.length; ++i) {
+    if(text.includes(csvArray[x])){
+        sendPrices(sender,csvArray[x])
+     }
+  }else if(text.includes("prices")){
   	sendGenericMessage2(sender)
   }else if (text.includes("news")){
     sendGenericMessage(sender)
