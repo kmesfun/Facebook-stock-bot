@@ -6,7 +6,7 @@
 //var output = fs.readFileSync('someData.txt')
 //var NAMES = fs.readFileSync("namelist.txt");
 //var SYMBOL = fs.readFileSync("csv");
-var csvString = $.trim($('companylist.csv').text());
+var csvString = d3.csv("companylist.csv").text().trim();
 var csvArray = csvToArray(csvString);
 
 
