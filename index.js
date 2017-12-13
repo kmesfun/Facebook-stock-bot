@@ -1,8 +1,11 @@
 import System.IO;
+import * as fs from 'fs';
 
 'use strict';
-let NAMES = new StreamReader("namelist.txt");
-let SYMBOL = new StreamReader("symbollist.txt");
+const fs = require('fs');
+//var output = fs.readFileSync('someData.txt')
+var NAMES = fs.readFileSync("namelist.txt");
+var SYMBOL = fs.readFileSync("symbollist.txt");
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
