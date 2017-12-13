@@ -1,11 +1,17 @@
-import System.IO;
-import * as fs from 'fs';
+//import System.IO;
+//import * as fs from 'fs';
 
 'use strict';
-const fs = require('fs');
+//const fs = require('fs');
 //var output = fs.readFileSync('someData.txt')
-var NAMES = new StreamReader("namelist.txt");
-var SYMBOL = new StreamReader("symbollist.txt");
+//var NAMES = fs.readFileSync("namelist.txt");
+//var SYMBOL = fs.readFileSync("csv");
+var csvString = $.trim($('companylist.csv').text());
+var csvArray = csvToArray(csvString);
+
+
+
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
@@ -68,9 +74,9 @@ app.post('/webhook/', function(req, res) {
 
 function decideMessage(sender, text1){
   let text = text1.toLowerCase();
-  while (!SYMBOL.EndOfStream)  {
-    if(text.includes(SYMBOL.ReadLine())){
-        sendPrices(sender,SYMBOL.ReadLine())
+  for (let i = 0; i < csvArray.length; i++) {
+    if(text.includes(csvArray[i])){
+        sendPrices(sender,csvArray[i])
   }
 }
   else if(text.includes("prices")){
@@ -109,8 +115,7 @@ function sendGenericMessage(sender){
         }
       }
     }
-      sendRequest(sender, messageData)
-      
+      sendRequest(sender, messageData) 
   }
 
   function sendGenericMessage2(sender){
@@ -190,7 +195,7 @@ function sendPrices(sender, companyname){
             "buttons":[
               {
                 "type":"web_url",
-                "url": bloomberg + companyname+":US"
+                "url": bloomberg + companyname + ":US"
                 "title":"Company Price"
               
               }              
@@ -234,6 +239,35 @@ app.listen(app.get('port'), function() {
 })
 
 
+//csv file to arrays
+function csvToArray(csvString){
+  // The array we're going to build
+  var csvArray   = [];
+  // Break it into rows to start
+  var csvRows    = csvString.split(/\n/);
+  // Take off the first line to get the headers, then split that into an array
+  var csvHeaders = csvRows.shift().split(';');
+
+  // Loop through remaining rows
+  for(var rowIndex = 0; rowIndex < csvRows.length; ++rowIndex){
+    var rowArray  = csvRows[rowIndex].split(';');
+
+    // Create a new row object to store our data.
+    var rowObject = csvArray[rowIndex] = {};
+    
+    // Then iterate through the remaining properties and use the headers as keys
+    for(var propIndex = 0; propIndex < rowArray.length; ++propIndex){
+      // Grab the value from the row array we're looping through...
+      var propValue =   rowArray[propIndex].replace(/^"|"$/g,'');
+      // ...also grab the relevant header (the RegExp in both of these removes quotes)
+      var propLabel = csvHeaders[propIndex].replace(/^"|"$/g,'');;
+
+      rowObject[propLabel] = propValue;
+    }
+  }
+
+  return csvArray;
+}
 
 //dashbot
 
