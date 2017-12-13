@@ -173,7 +173,7 @@ function sendButtonMessage(sender){
   }  
 
 
-function sendPrices(sender, name){
+function sendPrices(sender, companyname){
   let messageData = {
     "attachment":{
       "type":"template",
@@ -187,7 +187,7 @@ function sendPrices(sender, name){
             "buttons":[
               {
                 "type":"web_url",
-                "url": bloomberg + name+":US"
+                "url": bloomberg + companyname+":US"
                 "title":"Company Price"
               
               }              
