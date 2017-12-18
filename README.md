@@ -1,5 +1,5 @@
 # stock-bot
-A facebook messenger chat bot that gives you access to yahoo finance stock prices and company news
+A Retrieval-based model facebook messenger chat bot that gives you access to yahoo finance stock prices and company news.
 
 
 
