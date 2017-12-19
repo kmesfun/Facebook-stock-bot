@@ -1,11 +1,16 @@
 # stock-bot
-A Retrieval-based model facebook messenger chat bot that gives you access to yahoo finance stock prices and company news.
+A retrieval-based model facebook messenger chat bot that gives you access to bloomberg finance stock prices and company news. Uses predefined companies from a csv file scraped from the NASDAQ website.
+
+Example:
+User: AAPL
+Bot: https://www.bloomberg.com/quote/AApl:US 
 
 
 
-****under repairs****
+
+Facebook developer: https://developers.facebook.com/docs/messenger-platform/ 
+
 Future update: 
--Allow users to type in the stock name and get the price
 -Use dashbot for analytics
 
 
