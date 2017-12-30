@@ -19,3 +19,4 @@ Future update:
 
 Facebook developer: https://developers.facebook.com/docs/messenger-platform/ 
 
+![picture](img/stockbot-.png)
